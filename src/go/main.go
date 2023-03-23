@@ -21,7 +21,7 @@ func getHosts(c *gin.Context) {
 	h := make([]host, 0)
 	credential, err := base64.StdEncoding.DecodeString(strings.Split(c.Request.Header["Authorization"][0], " ")[1])
 	if err != nil {
-		c.JSON(400, "Invalid Credential")
+		c.String(400, "Invalid Credential")
 		return
 	}
 
@@ -29,7 +29,10 @@ func getHosts(c *gin.Context) {
 	user := credentials[0]
 	password := credentials[1]
 	if q.IsConnected() {
-		q.Sync(&h, []string{".discovery.getHosts", user, password})
+		err = q.Sync(&h, []string{".discovery.getHosts", user, password})
+		if err != nil {
+			c.String(400, err.Error())
+		}
 	}
 	c.JSON(200, h)
 }
