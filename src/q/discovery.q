@@ -9,3 +9,5 @@ upsert[`.discovery.hosts;(
 .discovery.getHosts:{[user;password]
   .discovery.hosts
  };
+
+.z.pg:{show x;value x};

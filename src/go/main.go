@@ -18,23 +18,28 @@ func main() {
 }
 
 func getHosts(c *gin.Context) {
-	h := make([]host, 0)
-	credential, err := base64.StdEncoding.DecodeString(strings.Split(c.Request.Header["Authorization"][0], " ")[1])
-	if err != nil {
-		c.String(400, "Invalid Credential")
-		return
+	hosts := make([]host, 0)
+	auth := c.Request.Header["Authorization"]
+	user := ""
+	password := ""
+	if len(auth) > 0 {
+		credential, err := base64.StdEncoding.DecodeString(strings.Split(auth[0], " ")[1])
+		if err != nil {
+			c.String(400, "Invalid Credential")
+			return
+		}
+		credentials := strings.Split(string(credential), ":")
+		user = credentials[0]
+		password = credentials[1]
 	}
 
-	credentials := strings.Split(string(credential), ":")
-	user := credentials[0]
-	password := credentials[1]
 	if q.IsConnected() {
-		err = q.Sync(&h, []string{".discovery.getHosts", user, password})
+		err := q.Sync(&hosts, []string{".discovery.getHosts", user, password})
 		if err != nil {
 			c.String(400, err.Error())
 		}
 	}
-	c.JSON(200, h)
+	c.JSON(200, hosts)
 }
 
 type host struct {
