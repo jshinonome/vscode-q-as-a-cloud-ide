@@ -1,0 +1,34 @@
+[
+  {
+    "url": "http://localhost:8080/hosts",
+    "user": "md",
+    "password": "mdpassword",
+    "useTLS": false,
+    "requireAuth": true,
+    "tags": "prod,md"
+  },
+  {
+    "url": "http://localhost:8080/hosts",
+    "user": "all",
+    "password": "allpassword",
+    "useTLS": false,
+    "requireAuth": true,
+    "tags": "uat,all"
+  },
+  {
+    "url": "http://localhost:8080/hosts",
+    "user": "analytics",
+    "password": "analytcispassword",
+    "useTLS": false,
+    "requireAuth": true,
+    "tags": "uat,analytics"
+  },
+  {
+    "url": "http://localhost:8080/hosts",
+    "user": "md",
+    "password": "mdpassword",
+    "useTLS": false,
+    "requireAuth": true,
+    "tags": "uat,md"
+  }
+]
