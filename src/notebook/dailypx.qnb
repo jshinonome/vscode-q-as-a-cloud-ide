@@ -1,0 +1,38 @@
+[
+  {
+    "kind": 2,
+    "language": "q",
+    "value": ".file.ls",
+    "outputs": []
+  },
+  {
+    "kind": 2,
+    "language": "q",
+    "value": ".file.ls`",
+    "outputs": []
+  },
+  {
+    "kind": 2,
+    "language": "q",
+    "value": ".tz.timezoneToUtc",
+    "outputs": []
+  },
+  {
+    "kind": 2,
+    "language": "q",
+    "value": ".tz.timezoneToUtc[.z.P;\"NZ\"]",
+    "outputs": []
+  },
+  {
+    "kind": 2,
+    "language": "q",
+    "value": "select count i by sym from dailypx",
+    "outputs": []
+  },
+  {
+    "kind": 2,
+    "language": "q",
+    "value": "select from dailypx where sym=`N225",
+    "outputs": []
+  }
+]
